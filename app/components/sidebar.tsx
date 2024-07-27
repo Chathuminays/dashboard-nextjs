@@ -1,5 +1,5 @@
-// import { useSidebar } from '../context/SidebarContext';
 import { IoIosClose } from "react-icons/io";
+import { useSidebar } from '../context/sidebarContext';
 
 // Define the types for the SidebarContext
 interface SidebarContextType {
@@ -9,18 +9,18 @@ interface SidebarContextType {
 
 const SideBar: React.FC = () => {
   // Using custom hook from SidebarContext to manage sidebar state
-//   const { isOpen, toggleSidebar } = useSidebar() as SidebarContextType;
+  const { isOpen, toggleSidebar } = useSidebar() as SidebarContextType;
 
   // Function to close the sidebar
-//   const handleClose = () => {
-//     toggleSidebar();
-//   };
+  const handleClose = () => {
+    toggleSidebar();
+  };
 
   return (
-    <div className={`xs:w-64 md:w-64 xl:w-56 2xl:w-64 z-30 bg-purple fixed h-full xs:mt-0 lg:mt-0 transition-transform duration-300 lg:translate-x-0`}>
+    <div className={`xs:w-64 md:w-64 xl:w-56 2xl:w-64 z-30 bg-purple fixed h-full xs:mt-0 lg:mt-0 transition-transform duration-300 ${isOpen ? 'transform-none' : '-translate-x-full'} lg:translate-x-0`}>
       {/* Close button for mobile view */}
       <div className='w-6 h-6 rounded-lg bg-purple absolute top-2 right-2 flex items-center justify-center lg:hidden'>
-        <IoIosClose className='w-6 h-6 text-white cursor-pointer'/>
+        <IoIosClose className='w-6 h-6 text-white cursor-pointer' onClick={handleClose}/>
       </div>
 
       <div className='h-20 bg-purple_light flex items-center justify-center'>

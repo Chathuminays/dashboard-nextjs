@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import { SidebarProvider } from './context/sidebarContext';
 import { IoMdClose, IoIosArrowBack, IoIosArrowForward  } from "react-icons/io";
 import SideBar from "./components/sidebar";
 import Header from "./components/header";
@@ -104,8 +105,13 @@ export default function Home() {
 
   return (
     <>
-      <SideBar/>
-      <Header/>
+      <SidebarProvider>
+
+        <SideBar/>
+        <Header/>
+        
+      </SidebarProvider>
+      
 
       <div className='bg-background lg:ml-64 xl:ml-56 2xl:ml-64 h-full xs:px-5 xl:px-2 2xl:px-5 py-5'>
         {/* Welcome Message */}
